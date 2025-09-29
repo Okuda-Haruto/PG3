@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Windows.h>
+#include <vector>
 
 int main() {
 	SetConsoleOutputCP(65001);

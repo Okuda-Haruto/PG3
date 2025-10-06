@@ -1,36 +1,22 @@
 #include <iostream>
-#include <Windows.h>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <fstream>
-#include <sstream>
+
+template<typename T>
+T Min(T t1, T t2) {
+	if (t1 < t2) {
+		return static_cast<T>(t1);
+	}
+	return static_cast<T>(t2);
+}
 
 int main() {
-	std::vector <std::string> vec;
 
-	// ファイルを開く
-	std::ifstream file;
-	file.open("PG3_2025_01_02.txt");
+	int i1 = 1, i2 = 5;
+	float f1 = 4.0f, f2 = 1.5f;
+	double d1 = 6.2, d2 = 0.8;
 
-	// ファイルの内容を文字列ストリームにコピー
-	std::stringstream LoadEnemyCommands_;
-	LoadEnemyCommands_ << file.rdbuf();
-
-	// ファイルを閉じる
-	file.close();
-
-	std::string word;
-
-	while (std::getline(LoadEnemyCommands_, word,',')) {
-		vec.push_back(word);
-	}
-
-	std::sort(vec.begin(), vec.end());
-
-	for (int i = 0; i < vec.size(); i++) {
-		printf("%s\n", vec[i].c_str());
-	}
+	printf("%d\n", Min<int>(i1, i2));
+	printf("%f\n", Min<float>(f1, f2));
+	printf("%lf\n", Min<double>(d1, d2));
 
 	return 0;
 }

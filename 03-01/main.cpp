@@ -49,5 +49,7 @@ int main() {
 		enemy->Update();
 	}
 
+	delete enemy;
+
 	return 0;
 }

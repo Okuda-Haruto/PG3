@@ -1,13 +1,14 @@
 #include <iostream>
+#include <cstdio>
 #include <Windows.h>
 #include <list>
 #include <vector>
 
 int main() {
 	std::list<const char*> lst{
-	"Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani","Nippori","Tabata","Komagome",
-	"Otsuka","Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku","Yoyogi","Harajuku","Shibuya",
-	"Ebisu","Meguro","Gotanda","Osaki","Sinagawa","Tamachi","Hamamatsucho","Shimbasi","Yurakucho" };
+	"Tokyo", "Kanda", "Akihabara", "Okachimachi", "Ueno", "Uguisudani", "Nippori", "Tabata", "Komagome", 
+	"Sugamo", "Otsuka", "Ikebukuro", "Mejiro", "Takadanobaba", "Shin-Okubo", "Shinjuku", "Yoyogi", "Harajuku", "Shibuya", 
+	"Ebisu", "Meguro", "Gotanda", "Osaki", "Shinagawa", "Tamachi", "Hamamatsucho", "Shimbasi", "Yurakucho" };
 	std::list<const char*>::iterator itr;
 
 	//1970年にある各駅を表示

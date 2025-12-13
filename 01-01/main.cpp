@@ -1,6 +1,4 @@
-#include <iostream>
 #include <cstdio>
-#include <Windows.h>
 #include <list>
 
 int main() {

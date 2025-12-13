@@ -2,7 +2,6 @@
 #include <cstdio>
 #include <Windows.h>
 #include <list>
-#include <vector>
 
 int main() {
 	std::list<const char*> lst{

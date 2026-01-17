@@ -1,33 +1,35 @@
 #include <Novice.h>
-#include <StageScene.h>
-#include <time.h>
-#include <random>
+#include "Scene.h"
 
-const char kWindowTitle[] = "PG3_05_02";
+const char kWindowTitle[] = "PG3_05_01";
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
-	unsigned int currentTime = int(time(nullptr));
-
-	srand(currentTime);
-
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1280, 720);
 
-	StageScene* stageScene = new StageScene;
-	stageScene->Init();
+	// キー入力結果を受け取る箱
+	char keys[256] = {0};
+	char preKeys[256] = {0};
+
+	Scene* scene = new Scene;
+	scene->Initialize();
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
 		Novice::BeginFrame();
 
+		// キー入力を受け取る
+		memcpy(preKeys, keys, 256);
+		Novice::GetHitKeyStateAll(keys);
+
 		///
 		/// ↓更新処理ここから
 		///
 
-		stageScene->Update();
+		scene->Update();
 
 		///
 		/// ↑更新処理ここまで
@@ -37,7 +39,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓描画処理ここから
 		///
 
-		stageScene->Draw();
+		scene->Draw();
 
 		///
 		/// ↑描画処理ここまで
@@ -46,9 +48,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		// フレームの終了
 		Novice::EndFrame();
 
+		// ESCキーが押されたらループを抜ける
+		if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
+			break;
+		}
 	}
 
-	delete stageScene;
+	delete scene;
 
 	// ライブラリの終了
 	Novice::Finalize();

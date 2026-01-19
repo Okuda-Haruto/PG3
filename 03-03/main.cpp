@@ -34,7 +34,7 @@ int main() {
 	printf("使用\n");
 
 	drink[0]->Initialize("ミネラルウォーター");
-	drink[1]->Initialize("四谷サイダー");
+	drink[1]->Initialize("三つ葉サイダー");
 	drink[2]->Initialize("クレートレモン");
 
 	for (int i = 0; i < 3; i++) {

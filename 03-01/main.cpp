@@ -3,16 +3,16 @@
 
 class Enemy {
 private:
-	void Contact();
-	void Shooting();
-	void Breakaway();
-	
 	bool isAlive;
 public:
 	void (Enemy::* state_)();
 
 	void Initialize();
 	void Update();
+
+	void Contact();
+	void Shooting();
+	void Breakaway();
 
 	bool IsAlive() { return isAlive; }
 };

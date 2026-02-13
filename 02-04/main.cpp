@@ -2,17 +2,16 @@
 #include <Windows.h>
 #include <random>
 #include <time.h>
-#include <functional>
 
 int main() {
 
-	std::function<void(std::function<void(int,int)> fn, unsigned int delayMs, int roll, int userGuess)> DelayReveal =
-	[](std::function<void(int, int)> fn, unsigned int delayMs, int roll, int userGuess){
-		Sleep(delayMs);
-		fn(roll, userGuess);
-	};
+	void (*DelayReveal)(void (*fn)(int, int),unsigned int,int,int) = [](void (*fn)(int, int), unsigned int delayMs, int roll, int userGuess)
+		{
+			Sleep(delayMs);
+			fn(roll, userGuess);
+		};
 
-	std::function<void(int,int)> ShowResult =
+	void (*ShowResult)(int, int) =
 	[](int roll, int userGuess) {
 		printf("出力は%dでした。\n", roll);
 		if (roll % 2 == userGuess) {
